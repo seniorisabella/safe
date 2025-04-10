@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Generador de Enlaces</title>
+    <style>
+        body { font-family: sans-serif; padding: 2rem; }
+        input { width: 100%; padding: 0.5rem; margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+    <h1>Generador de Enlace de Rastreo</h1>
+    <form method="POST">
+        <button type="submit">Generar Enlace</button>
+    </form>
+
+    {% if enlace %}
+    <h2>Resultado:</h2>
+    <label>📡 Enlace a enviar:</label>
+    <input type="text" readonly value="{{ enlace }}">
+    <label>👁️ Enlace para monitorear:</label>
+    <input type="text" readonly value="{{ monitor }}">
+    {% endif %}
+</body>
+</html>
+
+
+

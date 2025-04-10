@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú de Navegación</title>
+    <meta name="description" content="Menú profesional para tu sitio web">
+    <link rel="stylesheet" href="style/style.css">
+    <style>
+        /* Estilos globales */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        /* Estilo del contenedor principal */
+        .menu-container {
+            background-color: #fff;
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        /* Estilo del título */
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Estilos para los botones */
+        .menu-button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px 0;
+            background-color: #4caf50;
+            color: #fff;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            width: 80%;
+            text-align: center;
+        }
+
+        /* Efecto hover para los botones */
+        .menu-button:hover {
+            background-color: #45a049;
+            transform: translateY(-3px);
+        }
+
+        /* Efecto activo para los botones */
+        .menu-button:active {
+            transform: translateY(1px);
+        }
+
+        /* Agregar iconos a los botones */
+        .menu-button span {
+            margin-right: 10px;
+        }
+
+        /* Estilos para el footer (si se requiere) */
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <!-- Contenedor del menú -->
+    <div class="menu-container">
+        <h1>Menú de Navegación</h1>
+
+        <!-- Botones del menú con emojis y rutas -->
+        <a href="/ubicacion" class="menu-button">
+            <span>📍</span> Ver Ubicación
+        </a>
+        <a href="/monitor" class="menu-button">
+            <span>👀</span> Monitoreo en Tiempo Real
+        </a>
+        <a href="/generar" class="menu-button">
+            <span>🔗</span> Generar Enlace de Rastreo
+        </a>
+
+    </div>
+
+    <!-- Pie de página -->
+    <div class="footer">
+        <p>© ESA</p>
+    </div>
+
+</body>
+</html>
